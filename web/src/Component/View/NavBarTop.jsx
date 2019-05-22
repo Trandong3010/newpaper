@@ -48,7 +48,7 @@ class NavBarTop extends Component {
                         <ul class="nav-menu">
                             <li>
                                 <div className="avatar-sm float-left mr-2">
-                                    <img src="https://github.com/Trandong3010/newpaper/blob/master/web/public/assets/img/profile.jpg" alt="..." className="avatar-img rounded-circle" />
+                                    <img src="" alt="img/logo.png" className="avatar-img rounded-circle" />
                                 </div>
                                 <a href="#" onClick={this.showModal}><span className="sub-item">Đăng nhập</span></a>
                             </li>
