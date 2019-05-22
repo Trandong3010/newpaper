@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "87c67d0b0c54acd4d91ba1e80c4eeb62",
+    "revision": "018cb8a73676f9e3e1b05afa3a6dc967",
     "url": "/newpaper/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/newpaper/static/css/2.55d04ec3.chunk.css"
   },
   {
-    "revision": "2295a4ad14f4cdee221c",
+    "revision": "36e24f0c8781ae9edf46",
     "url": "/newpaper/static/css/main.2cce8147.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/newpaper/static/js/2.800cddfc.chunk.js"
   },
   {
-    "revision": "2295a4ad14f4cdee221c",
-    "url": "/newpaper/static/js/main.b37fc24d.chunk.js"
+    "revision": "36e24f0c8781ae9edf46",
+    "url": "/newpaper/static/js/main.57f77ca3.chunk.js"
   },
   {
     "revision": "e000a26fceb06c1d3e76",
