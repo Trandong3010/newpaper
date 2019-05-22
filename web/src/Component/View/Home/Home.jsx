@@ -81,7 +81,7 @@ class Home extends Component {
                             </ol>
                             <div className="carousel-inner">
                                 <div className="carousel-item active">
-                                    <img className="d-block w-100" src="assets/img/hero-bg.jpg" alt="First slide" />
+                                    <img className="d-block w-100" src="../assets/img/hero-bg.jpg" alt="First slide" />
                                 </div>
                                 <div className="carousel-item">
                                     <img className="d-block w-100" src="assets/img/hero-bg.jpg" alt="Second slide" />
