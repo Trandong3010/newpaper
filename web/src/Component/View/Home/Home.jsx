@@ -81,13 +81,13 @@ class Home extends Component {
                             </ol>
                             <div className="carousel-inner">
                                 <div className="carousel-item active">
-                                    <img className="d-block w-100" src="../assets/img/hero-bg.jpg" alt="First slide" />
+                                    <img className="d-block w-100" src="newpaper/assets/img/hero-bg.jpg" alt="First slide" />
                                 </div>
                                 <div className="carousel-item">
-                                    <img className="d-block w-100" src="assets/img/hero-bg.jpg" alt="Second slide" />
+                                    <img className="d-block w-100" src="newpaper/assets/img/hero-bg.jpg" alt="Second slide" />
                                 </div>
                                 <div className="carousel-item">
-                                    <img className="d-block w-100" src="assets/img/hero-bg.jpg" alt="Third slide" />
+                                    <img className="d-block w-100" src="newpaper/assets/img/hero-bg.jpg" alt="Third slide" />
                                 </div>
                             </div>
                             <a className="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
