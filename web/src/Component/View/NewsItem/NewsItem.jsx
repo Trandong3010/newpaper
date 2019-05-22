@@ -38,6 +38,7 @@ class NewsItem extends Component {
                     <img src={this.props.images} width="100%" alt="" />
                 </div>
                 <div className={this.props.col2}>
+                    <Link to={"/chi-tiet-tin/" + this.chuyenDoiURL( this.props.title) + ".html"}><h4 className="text-uppercase m-0">{this.props.title}</h4></Link>
                     <a href=""><h4>{this.props.title}</h4></a>
                     <p>{this.props.name}</p>
                 </div>

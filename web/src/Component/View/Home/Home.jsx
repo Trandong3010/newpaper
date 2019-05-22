@@ -42,6 +42,7 @@ class Home extends Component {
         let ykien = this.state.ykien;
         var left = items.map((value1, key) => {
             if (key < 4) {
+                console.log(value1.link);
                 return (
                     <NewsItem key={key} classname="row my-3" col1="col-lg-6" col2="col-lg-6"
                         images={value1.thumbnail} title={value1.title}
@@ -81,13 +82,13 @@ class Home extends Component {
                             </ol>
                             <div className="carousel-inner">
                                 <div className="carousel-item active">
-                                    <img className="d-block w-100" src="img/hero-bg.jpg" alt="First slide" />
+                                    <img className="d-block w-100" src="assets/img/hero-bg.jpg" alt="First slide" />
                                 </div>
                                 <div className="carousel-item">
-                                    <img className="d-block w-100" src="img/hero-bg.jpg" alt="Second slide" />
+                                    <img className="d-block w-100" src="assets/img/hero-bg.jpg" alt="Second slide" />
                                 </div>
                                 <div className="carousel-item">
-                                    <img className="d-block w-100" src="img/hero-bg.jpg" alt="Third slide" />
+                                    <img className="d-block w-100" src="assets/img/hero-bg.jpg" alt="Third slide" />
                                 </div>
                             </div>
                             <a className="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">

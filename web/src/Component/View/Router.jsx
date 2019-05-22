@@ -22,6 +22,7 @@ class Router extends Component {
                     <Route path="/technology" name="Technology" component={Technology} />
                     <Route path="/sport" name="Sport" component={Sport} />
                     <Route path="/newsdetail" name="newsdetail" component={NewDetail} />
+                    <Route exact path="/chi-tiet-tin/:slug.:id.html" component={NewDetail} />
                 </Switch>
             </div>
         );
