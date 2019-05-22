@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/newpaper/static/css/main.2cce8147.chunk.css",
+    "main.js": "/newpaper/static/js/main.b37fc24d.chunk.js",
+    "main.js.map": "/newpaper/static/js/main.b37fc24d.chunk.js.map",
+    "runtime~main.js": "/newpaper/static/js/runtime~main.802d420a.js",
+    "runtime~main.js.map": "/newpaper/static/js/runtime~main.802d420a.js.map",
+    "static/css/2.55d04ec3.chunk.css": "/newpaper/static/css/2.55d04ec3.chunk.css",
+    "static/js/2.800cddfc.chunk.js": "/newpaper/static/js/2.800cddfc.chunk.js",
+    "static/js/2.800cddfc.chunk.js.map": "/newpaper/static/js/2.800cddfc.chunk.js.map",
+    "index.html": "/newpaper/index.html",
+    "precache-manifest.13628fe2a39f5c8af23a7714fdfc5dec.js": "/newpaper/precache-manifest.13628fe2a39f5c8af23a7714fdfc5dec.js",
+    "service-worker.js": "/newpaper/service-worker.js",
+    "static/css/2.55d04ec3.chunk.css.map": "/newpaper/static/css/2.55d04ec3.chunk.css.map",
+    "static/css/main.2cce8147.chunk.css.map": "/newpaper/static/css/main.2cce8147.chunk.css.map",
+    "static/media/logo.svg": "/newpaper/static/media/logo.5d5d9eef.svg"
+  }
+}
