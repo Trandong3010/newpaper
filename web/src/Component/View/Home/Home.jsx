@@ -8,12 +8,24 @@ class Home extends Component {
         super(props);
         this.state = {
             data: [],
-            ykien: []
+            ykien: [],
+            datanew: [],
+            datalaw: [],
+            dataworld: []
         }
     }
 
     componentDidMount() {
 
+        this.tinmoinhat();
+        this.top();
+        this.news();
+        this.law();
+        this.wolds();
+    }
+
+    tinmoinhat()
+    {
         axios.get('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fvnexpress.net%2Frss%2Ftin-moi-nhat.rss')
             .then(response => {
                 // console.log(response.data);
@@ -22,7 +34,6 @@ class Home extends Component {
             .catch(function (error) {
                 console.log(error);
             })
-        this.top();
     }
 
     top(){
@@ -36,16 +47,54 @@ class Home extends Component {
             })
     }
 
+    //Thời sự
+    news() {
+        axios.get('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fvnexpress.net%2Frss%2Fthoi-su.rss')
+            .then(response => {
+                // console.log(response.data);
+                this.setState({ datanew: response.data.items });
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+    // Pháp luật
+    law() {
+        axios.get('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fvnexpress.net%2Frss%2Fphap-luat.rss')
+            .then(response => {
+                // console.log(response.data);
+                this.setState({ datalaw: response.data.items });
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+    wolds() {
+        axios.get('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fvnexpress.net%2Frss%2Fthe-gioi.rss')
+            .then(response => {
+                // console.log(response.data);
+                this.setState({ dataworld: response.data.items });
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
 
     render() {
         let items = this.state.data;
+        console.log("dữ liệu",items);
         let ykien = this.state.ykien;
+        let news = this.state.datanew;
+        let law = this.state.datalaw;
+        let wold = this.state.dataworld;
         var left = items.map((value1, key) => {
             if (key < 4) {
                 console.log(value1.link);
                 return (
                     <NewsItem key={key} classname="row my-3" col1="col-lg-6" col2="col-lg-6"
-                        images={value1.thumbnail} title={value1.title}
+                        images={value1.thumbnail} title={value1.title} link={value1.link}
                     />
                 )
             }
@@ -55,7 +104,7 @@ class Home extends Component {
             if (key > 8) {
                 return (
                     <NewsItem key={key} classname="row my-3" col1="col-lg-12" col2="col-lg-12"
-                        images={value1.thumbnail} title={value1.title}
+                        images={value1.thumbnail} title={value1.title} link={value1.link}
                     />
                 )
             }
@@ -65,7 +114,36 @@ class Home extends Component {
             if (key > 7) {
                 return (
                     <NewsItem key={key} classname="row my-3" col1="col-lg-12" col2="col-lg-12"
-                        images={value1.thumbnail} title={value1.title}
+                        images={value1.thumbnail} title={value1.title} link={value1.link}
+                    />
+                )
+            }
+        })
+
+        var news1 = news.map((value1, key) => {
+            if (key > 5) {
+                return (
+                    <NewsItem key={key} classname="col-lg-3" col1="col-lg-12" col2="col-lg-12"
+                        images={value1.thumbnail} title={value1.title} link={value1.link}
+                    />
+                )
+            }
+        })
+
+        var law1 = law.map((value1, key) => {
+            if (key > 5) {
+                return (
+                    <NewsItem key={key} classname="col-lg-3" col1="col-lg-12" col2="col-lg-12"
+                        images={value1.thumbnail} title={value1.title} link={value1.link}
+                    />
+                )
+            }
+        })
+        var wold1 = wold.map((value1, key) => {
+            if (key > 5) {
+                return (
+                    <NewsItem key={key} classname="col-lg-3" col1="col-lg-12" col2="col-lg-12"
+                        images={value1.thumbnail} title={value1.title} link={value1.link}
                     />
                 )
             }
@@ -82,13 +160,13 @@ class Home extends Component {
                             </ol>
                             <div className="carousel-inner">
                                 <div className="carousel-item active">
-                                    <img className="d-block w-100" src="assets/img/hero-bg.jpg" alt="First slide" />
+                                    <img className="d-block w-100" src="https://znews-photo.zadn.vn/w860/Uploaded/fcivbqmv/2019_05_20/huawei20727372.jpg" alt="First slide" />
                                 </div>
                                 <div className="carousel-item">
-                                    <img className="d-block w-100" src="assets/img/hero-bg.jpg" alt="Second slide" />
+                                    <img className="d-block w-100" src="https://znews-photo.zadn.vn/w660/Uploaded/lce_jwquc/2019_02_25/Mate_X_14_4.jpg" alt="Second slide" />
                                 </div>
                                 <div className="carousel-item">
-                                    <img className="d-block w-100" src="assets/img/hero-bg.jpg" alt="Third slide" />
+                                    <img className="d-block w-100" src="https://znews-photo.zadn.vn/w660/Uploaded/pqmcbzwv/2019_05_21/factsaboutappleinc.jpg" alt="Third slide" />
                                 </div>
                             </div>
                             <a className="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
@@ -130,46 +208,7 @@ class Home extends Component {
                         </div>
                         <div className="card-body">
                             <div class="row my-3">
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                {news1}
                             </div>
                         </div>
                     </div>
@@ -182,46 +221,7 @@ class Home extends Component {
                         </div>
                         <div className="card-body">
                             <div class="row">
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                {law1}
                             </div>
                         </div>
                     </div>
@@ -234,202 +234,7 @@ class Home extends Component {
                         </div>
                         <div className="card-body">
                             <div class="row">
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-lg-12 col-md-6 col-sm-6">
-                    <div className="card">
-                        <div className="card-header">
-                            <h1>Kinh doanh</h1>
-                        </div>
-                        <div className="card-body">
-                            <div class="row">
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-lg-12 col-md-6 col-sm-6">
-                    <div className="card">
-                        <div className="card-header">
-                            <h1>Công nghệ</h1>
-                        </div>
-                        <div className="card-body">
-                            <div class="row">
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="col-lg-12 col-md-6 col-sm-6">
-                    <div className="card">
-                        <div className="card-header">
-                            <h1>Thể thao</h1>
-                        </div>
-                        <div className="card-body">
-                            <div class="row">
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3">
-                                    <div className="row">
-                                        <div className="col-lg-12">
-                                            <img src="https://znews-photo.zadn.vn/w480/Uploaded/yfsgs/2019_05_06/ve_gui_xe_thumb.jpg" width="100%" alt="" />
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <p>'Ngã ngửa' vì mất hàng trăm nghìn một lượt gửi xe ở bệnh viện</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                {wold1}
                             </div>
                         </div>
                     </div>

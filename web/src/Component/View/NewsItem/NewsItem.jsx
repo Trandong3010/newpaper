@@ -32,6 +32,7 @@ class NewsItem extends Component {
     }
 
     render() {
+        var link = this.props.link;
         return (
             <div className={this.props.classname}>
                 <div className={this.props.col1}>
@@ -39,7 +40,6 @@ class NewsItem extends Component {
                 </div>
                 <div className={this.props.col2}>
                     <Link to={"/chi-tiet-tin/" + this.chuyenDoiURL( this.props.title) + ".html"}><h4 className="text-uppercase m-0">{this.props.title}</h4></Link>
-                    <a href=""><h4>{this.props.title}</h4></a>
                     <p>{this.props.name}</p>
                 </div>
             </div>

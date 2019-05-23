@@ -10,7 +10,7 @@ class Law extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         axios.get('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fvnexpress.net%2Frss%2Fphap-luat.rss')
             .then(response => {
                 // console.log(response.data);
@@ -25,31 +25,29 @@ class Law extends Component {
         console.log(items)
         var laws = items.map((value1, key) => {
             return (
-                <NewsItem key={key} classname="row" col1="col-lg-12" col2="col-lg-12"
+                <NewsItem key={key} classname="col-lg-3" col1="col-lg-12" col2="col-lg-12"
                     images={value1.thumbnail} title={value1.title}
                 />
             )
         })
         return (
-            <div className="container">
-            <div className="col-lg-12 col-md-6 col-sm-6">
-                <div className="card">
-                    <div className="card-header">
-                        <h1>Thời sự</h1>
-                    </div>
-                    <div className="card-body">
-                        <div class="row">
-                            <div className="col-lg-3">
+            <div className="container" style={{ paddingTop: "120px" }}>
+                <div className="col-lg-12 col-md-6 col-sm-6">
+                    <div className="card">
+                        <div className="card-header">
+                            <h1>Thời sự</h1>
+                        </div>
+                        <div className="card-body">
+                            <div class="row">
                                 {
                                     laws
                                 }
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         );
     }
 }

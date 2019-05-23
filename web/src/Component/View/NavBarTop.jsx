@@ -40,7 +40,7 @@ class NavBarTop extends Component {
                                         <i className="fa fa-search search-icon" />
                                     </button>
                                 </div>
-                                <input type="text" placeholder="Search ..." className="form-control" />
+                                <input type="text" placeholder="Tìm kiếm ..." className="form-control" />
                             </div>
                         </form>
                     </div>

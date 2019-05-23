@@ -1,24 +1,30 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 class NewDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: {
-                id: 1,
-                title: "Trả 700 triệu cho xe máy bình dân biển đẹp, tay chơi quyết không bán",
-                description: "Săn xe máy biển số đẹp đã trở thành đam mê bạc tỷ của nhiều dân chơi ở miền Tây. Và khi đã “nghiện” thì không ai muốn bán xe.",
-                images: "https://znews-photo.zadn.vn/w660/Uploaded/lce_jwquc/2019_05_13/tra700trieuchoxemaybinhdantaychoiquyetkhongban.jpg",
-
-            }
+            items: []
         }
     }
+    componentDidMount() {
+        debugger
+        axios.get('http://localhost:5000/getdata01')
+          .then(response => {
+            console.log(response.data);
+            this.setState({ items: response.data });
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+      }
 
     render() {
-        var item = this.state.data;
+        var item = this.state.items;
+        console.log(item);
         return (
             <div className="container">
-                <div className="row">
+                {/* <div className="row">
                     <div className="col-lg-12">
                         <h1>{item.title}</h1>
                     </div>
@@ -37,7 +43,7 @@ class NewDetail extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         );
     }

@@ -25,14 +25,14 @@ class News extends Component {
         console.log(items)
         var news = items.map((value1, key) => {
             return (
-                <NewsItem key={key} classname="row" col1="col-lg-12" col2="col-lg-12"
+                <NewsItem key={key} classname="col-lg-3" col1="col-lg-12" col2="col-lg-12"
                     images={value1.thumbnail} title={value1.title}
                 />
             )
         })
 
         return (
-            <div className="container">
+            <div className="container" style={{ paddingTop: "120px" }}>
                 <div className="col-lg-12 col-md-6 col-sm-6">
                     <div className="card">
                         <div className="card-header">
@@ -40,11 +40,9 @@ class News extends Component {
                         </div>
                         <div className="card-body">
                             <div class="row">
-                                <div className="col-lg-3">
-                                    {
-                                        news
-                                    }
-                                </div>
+                                {
+                                    news
+                                }
                             </div>
 
                         </div>

@@ -1,0 +1,26 @@
+{
+  "name": "News",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "web": "cd web && npm start",
+    "server": "cd server && npm start",
+    "start": "concurrently \"npm run server\" \"npm run web\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trandong3010/News.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Trandong3010/News/issues"
+  },
+  "homepage": "https://github.com/Trandong3010/News#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
+}
